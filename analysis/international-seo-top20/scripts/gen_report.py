@@ -62,8 +62,18 @@ rj=A[A.decision=='REJECTED'].copy()
 rj=rj[['id','markets','concept','primary_keyword','primary_vol','total','A','reason']]
 rj.columns=['ID','Market','Candidate','Primary keyword','KP range','Score','A','Why it missed']
 disc=pd.DataFrame(discovery.L,columns=['Market','Keyword / family (native)','Gloss','How found','Why it matters','Validation status'])
+VOL=pd.read_csv(os.path.join(OUT,'top20_search_volume.csv')); VOLD=pd.read_csv(os.path.join(OUT,'top20_search_volume_keywords.csv'))
+vt=VOL[['rank','opportunity','markets','primary_keyword','primary_avg_monthly_searches','primary_three_month_change','primary_yoy_change','kw_100K_1M','kw_10K_100K','kw_1K_10K','kw_100_1K','kw_10_100','kw_shown_as_dash','kw_not_visible','cluster_range_text']].copy()
+vt['kw_10K_100K']=vt.kw_10K_100K+vt.kw_100K_1M
+vt=vt.drop(columns=['kw_100K_1M'])
+vt.columns=['#','Opportunity','Market','Primary keyword','Primary: avg. monthly searches','3-mo','YoY','Kw ≥10K','Kw 1K–10K','Kw 100–1K','Kw 10–100','Kw "—"','Kw not visible','Cluster range (sum of bounds)/month']
+det=[]
+for (rk,name),g in VOLD.groupby(['rank','opportunity'],sort=True):
+    gg=g.head(10)
+    det.append(f"**{rk}. {name}** ({len(g)} keywords with a range)\n\n"+md(gg[['market','keyword','avg_monthly_searches','three_month_change','yoy_change','ads_competition']].rename(columns={'market':'Market','keyword':'Keyword','avg_monthly_searches':'Avg. monthly searches','three_month_change':'3-mo','yoy_change':'YoY','ads_competition':'Ads comp.'})))
+VOLCHECK=open(os.path.join(S,'volcheck','note.txt')).read().strip() if os.path.exists(os.path.join(S,'volcheck','note.txt')) else ''
 tpl=open(os.path.join(B,'report_template.md')).read()
 rep=(tpl.replace('{{AUDIT_TABLE}}',md(g)).replace('{{AUDIT_TOT}}',f"Totals: {int(tot.CSV_keywords):,} CSV keywords; {int(tot.visible_in_screenshots):,} visible with a matched row; {int(tot.with_volume):,} with a volume range; {int(tot.shown_as_dash):,} shown as '—'; {int(tot.not_visible):,} not visible (incl. all 1,277 TR).")
-   .replace('{{TOP20_TABLE}}',md(tt)).replace('{{ENTRIES}}','\n'.join(E)).replace('{{REJECTED_TABLE}}',md(rj)).replace('{{DISCOVERY_TABLE}}',md(disc)))
+   .replace('{{TOP20_TABLE}}',md(tt)).replace('{{ENTRIES}}','\n'.join(E)).replace('{{REJECTED_TABLE}}',md(rj)).replace('{{DISCOVERY_TABLE}}',md(disc)).replace('{{VOLUME_TABLE}}',md(vt)).replace('{{VOLUME_DETAIL}}','\n'.join(det)).replace('{{VOLCHECK_NOTE}}',VOLCHECK))
 open(os.path.join(OUT,'REPORT.md'),'w').write(rep)
 print(len(rep))

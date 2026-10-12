@@ -117,11 +117,32 @@ validation=pd.DataFrame([
  ('Precise monthly volumes & trends','Top-20 heads','Screenshots give 10× ranges; several heads show −90% YoY (verzugszinsen berechnen, hektar przeliczeniowy, calculadora modalidad 40, 1 mayam berapa gram, calculadora de liquidación). Pull 12-month series (any spending account or GKP export) to separate real decline from bucket artefacts.','Changes B scores; could drop DE-07/PL-08','High'),
  ('Turkey Keyword Planner export','TR (1,277 keywords, zero metrics)','No TR screenshot exists; TR cannot enter the Top 20 without it.','Could add 1–3 TR entries (dönüm, kira artış, 4\'lük)','Medium'),
  ('Non-Japan locations for English Japan queries','JP_EN','jp_en plan was measured with location = Japan, which excludes most English searchers. Re-run with Worldwide/US/PH/VN/IN.','Could promote JP_EN-02 pension refund (strong monetisation)','Medium'),
- ('Keywords not visible in screenshots','1,837 CSV keywords (18.4% of non-TR) incl. "uma 2026" family, "validador cnpj alfanumérico", many JP tails','Stitched captures skip ~7 rows between segments.','Could enlarge MX-03 and BR-04 clusters','Medium'),
+ ('Keywords not visible in screenshots','1,823 CSV keywords (18.3% of non-TR) incl. "uma 2026" family, "validador cnpj alfanumérico", many JP tails','Stitched captures skip ~7 rows between segments.','Could enlarge MX-03 and BR-04 clusters','Medium'),
  ('Legal/regulatory sign-off','MX-01, BR-03, BR-02, BR-08, PL-04, JP-07, DE-02/03/07','Formulas and parameters must be validated by a local professional before launch (e.g., MX prima de antigüedad cap basis; PL 2026 staż rules).','Launch blocker for those tools','High'),
  ('Data licences','PL-02 (SGJP/Morfeusz), PL-05 (word list), JP-01 (Japan Post), MX-03 (Banxico SIE), BR-03 (CNAE×LC116 correlation)','Confirm reuse terms.','Launch blocker','Medium'),
  ('Monetisation assumptions','ID-01, ID-09, JP-TXT, PL-05','RPM in Indonesia/for word games is low; if the business model is RPM-driven, swap these for MX-02/BR-02/PL-01.','Reorders #4–#9','Medium'),
 ],columns=['missing_evidence','applies_to','why_and_how','decision_impact','priority'])
+# ---- search volume view (requested follow-up)
+VOL_ORDER={'100K – 1M':5,'10K – 100K':4,'1K – 10K':3,'100 – 1K':2,'10 – 100':1,'0 – 10':0}
+volrows=[];voldetail=[]
+for c in [c for c in cands if c['rank']]:
+    x=members(c); v=x[x.vol_rank.notna()]
+    n10=int((v.vol_rank==1).sum()); n0=int((v.vol_rank==0).sum())
+    dash=int((x.in_screenshot&x.vol_rank.isna()).sum())
+    volrows.append(dict(rank=c['rank'],id=c['id'],opportunity=details.SHORT[c['id']],markets=c['markets'],primary_keyword=c['primary'],
+        primary_avg_monthly_searches=c['p_vol'],primary_three_month_change=c['p_m3'],primary_yoy_change=c['p_yoy'],primary_ads_competition=c['p_comp'],primary_top_of_page_bid_INR=c['p_bid'],
+        kw_100K_1M=int((v.vol_rank==5).sum()),kw_10K_100K=c['n_10k_plus']-int((v.vol_rank==5).sum()),kw_1K_10K=c['n_1k_10k'],kw_100_1K=c['n_100_1k'],kw_10_100=n10,kw_0_10=n0,
+        kw_shown_as_dash=dash,kw_not_visible=c['not_visible'],kw_total_in_cluster=c['kw_in_csv'],
+        cluster_monthly_searches_low=c['floor'],cluster_monthly_searches_high=c['ceiling'],
+        cluster_range_text=f"{c['floor']:,} – {c['ceiling']:,}",
+        note='Ranges are Keyword Planner buckets (Sep 2025–Aug 2026, location = market, all languages). Cluster low/high = sum of bucket lower/upper bounds of every keyword with a range; close variants can double-count, dashes and invisible keywords add nothing.'))
+    vv=v.copy(); vv['o']=vv.vol_rank
+    for t in vv.sort_values(['o','keyword'],ascending=[False,True]).itertuples():
+        voldetail.append(dict(rank=c['rank'],id=c['id'],opportunity=details.SHORT[c['id']],market=t.market,keyword=t.keyword,avg_monthly_searches=t.vol,
+            three_month_change=t.m3 if isinstance(t.m3,str) else '',yoy_change=t.yoy if isinstance(t.yoy,str) else '',ads_competition=t.comp if isinstance(t.comp,str) else '',
+            top_bid_low_INR=t.bid_lo,top_bid_high_INR=t.bid_hi,source_screenshot=t.screenshot_files,
+            verification=('visually corrected' if isinstance(getattr(t,'corrected',''),str) and getattr(t,'corrected','') else 'visually verified (workflow)')))
+VOL=pd.DataFrame(volrows); VOLD=pd.DataFrame(voldetail)
 # ---- write xlsx
 from openpyxl.styles import Font, Alignment, PatternFill
 from openpyxl.utils import get_column_letter
@@ -131,7 +152,7 @@ readme=pd.DataFrame({'item':['Purpose','Generated','Evidence','Keyword Planner s
  'Location = market country (Japan for JP_EN), All languages, Google, Sep 2025 – Aug 2026, "Saved keywords" view. Values are BUCKETED ranges (account without spend) — never converted to point estimates.',
  'Top-of-page bids are in Indian Rupees (₹) — the Ads account currency, not local currency.',
  'Row detection on separator lines + per-column Tesseract OCR; rupee glyph blanked before OCR; keywords aligned to CSV (punctuation-normalised, order-aware).',
- '76 distinct metric rows (finalist heads and high-bid rows) checked visually against the screenshots: 76/76 identical to the OCR output.',
+ 'All 881 visible keywords in the Top-20 clusters checked against the screenshots by a 2-stage agent workflow (1 checker per 30-row sheet + 2 independent adjudicators per disagreement): 0 volume-range errors; 2 bid errors and 5 keyword-identity errors found and corrected. The matcher was fixed and re-run (34 of 8,223 row identities changed). Plus 76 earlier manual spot checks (all identical).',
  'WebSearch tool, native-language queries, standard + extended modes; US-index proxy, NOT geo-located Google. Direct Google/Bing/DDG fetches blocked (403).',
  'Dashes and missing values are UNKNOWN, not zero. Ads competition ≠ organic difficulty. Cluster floor/ceiling sums add bucket bounds and may double-count close variants.',
  'Top20, Top20_Detail, Top20_Keyword_Clusters, All_Candidates_Scored, Scoring_Rubric, SERP_Evidence, Discovery_List, Roadmap, Validation_Checklist, Screenshot_Audit, KP_All_Keywords']})
@@ -139,7 +160,7 @@ kp=master.rename(columns={'vol':'avg_monthly_searches','m3':'three_month_change'
 kp=kp[['market','country','language','source_file','keyword','in_screenshot','avg_monthly_searches','three_month_change','yoy_change','ads_competition','top_bid_low_INR','top_bid_high_INR','screenshot_files','validation_status','status','match_score','ocr_kw']]
 kp['avg_monthly_searches']=kp.apply(lambda r: r.avg_monthly_searches if isinstance(r.avg_monthly_searches,str) and r.avg_monthly_searches else ('— (unknown)' if r.in_screenshot else ''),axis=1)
 sheets=[('README',readme),('Top20',T20[['rank','id','short_name','concept','markets','language','primary_keyword','primary_avg_monthly_searches','primary_3m_change','primary_yoy','primary_ads_competition','primary_top_bid_INR','cluster_kw_with_volume','cluster_10k_plus','cluster_1k_10k','cluster_100_1k','cluster_floor_sum','A_organic_25','B_demand_20','C_toolfit_20','D_intent_10','E_cluster_10','F_monetisation_10','G_feasibility_5','total_100','confidence','organic_assessment','url_structure']]),
- ('Top20_Detail',T20),('Top20_Keyword_Clusters',mem),('All_Candidates_Scored',allc),('Scoring_Rubric',rubric),('SERP_Evidence',serp_df),('Discovery_List',disc),
+ ('Top20_Search_Volume',VOL),('Top20_Volume_Keywords',VOLD),('Top20_Detail',T20),('Top20_Keyword_Clusters',mem),('All_Candidates_Scored',allc),('Scoring_Rubric',rubric),('SERP_Evidence',serp_df),('Discovery_List',disc),
  ('Roadmap',roadmap),('Validation_Checklist',validation),('Screenshot_Audit',audit),('KP_All_Keywords',kp)]
 xl=os.path.join(OUT,'top20_seo_opportunities.xlsx')
 with pd.ExcelWriter(xl,engine='openpyxl') as w:
@@ -155,7 +176,7 @@ with pd.ExcelWriter(xl,engine='openpyxl') as w:
                 for cell in row: cell.alignment=Alignment(wrap_text=True,vertical='top')
         ws.auto_filter.ref=ws.dimensions
 # csv copies
-T20.to_csv(os.path.join(OUT,'top20.csv'),index=False); allc.to_csv(os.path.join(OUT,'candidates_scored.csv'),index=False)
+T20.to_csv(os.path.join(OUT,'top20.csv'),index=False); VOL.to_csv(os.path.join(OUT,'top20_search_volume.csv'),index=False); VOLD.to_csv(os.path.join(OUT,'top20_search_volume_keywords.csv'),index=False); allc.to_csv(os.path.join(OUT,'candidates_scored.csv'),index=False)
 mem.to_csv(os.path.join(OUT,'top20_keyword_clusters.csv'),index=False); kp.to_csv(os.path.join(OUT,'keyword_metrics_extracted.csv'),index=False)
 serp_df.to_csv(os.path.join(OUT,'serp_evidence.csv'),index=False); disc.to_csv(os.path.join(OUT,'discovery_list.csv'),index=False)
 audit.to_csv(os.path.join(OUT,'screenshot_audit.csv'),index=False)

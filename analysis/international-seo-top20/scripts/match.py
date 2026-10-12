@@ -81,12 +81,12 @@ for f in sorted(glob.glob(os.path.join(S,'ocr','*.png.json'))):
         q=kp_norm(k.rstrip('.…').strip())
         sc=np.array([fuzz.ratio(q,c[:len(q)]) if trunc else fuzz.ratio(q,c) for c in low])
         best=sc.max()
-        cand=[i for i in np.where(sc>=best-3)[0] if i not in used]
-        if not cand: cand=list(np.where(sc>=best-3)[0])
+        cand=[i for i in np.where(sc>=best-1)[0] if i not in used]
+        if not cand: cand=list(np.where(sc>=best-1)[0])
         after=[i for i in cand if i>p]
         i=min(after) if after else min(cand,key=lambda i:abs(i-p))
         status='matched' if sc[i]>=85 else 'unmatched'
-        ambiguous=trunc and (sc>=best-3).sum()>1
+        ambiguous=trunc and (sc>=best-1).sum()>1
         used.add(i)
         if status=='matched': p=max(p,i)
         rows.append(mk(r,m,k,kws[i] if status=='matched' else k,kws[i],sc[i],status,ambiguous))

@@ -2,7 +2,7 @@
 
 *Prepared 2026-10-12 from the nine keyword CSVs and 22 Google Keyword Planner screenshots in this repository, plus live web research. Every metric below traces to a screenshot row or a cited URL. Nothing is estimated beyond what the evidence shows.*
 
-Files: [`top20_seo_opportunities.xlsx`](top20_seo_opportunities.xlsx) (main database) · [`top20.csv`](top20.csv) · [`candidates_scored.csv`](candidates_scored.csv) · [`top20_keyword_clusters.csv`](top20_keyword_clusters.csv) · [`keyword_metrics_extracted.csv`](keyword_metrics_extracted.csv) · [`serp_evidence.csv`](serp_evidence.csv) · [`discovery_list.csv`](discovery_list.csv) · [`screenshot_audit.csv`](screenshot_audit.csv) · [`scripts/`](scripts/)
+Files: [`top20_seo_opportunities.xlsx`](top20_seo_opportunities.xlsx) (main database) · [`top20.csv`](top20.csv) · [`top20_search_volume.csv`](top20_search_volume.csv) · [`top20_search_volume_keywords.csv`](top20_search_volume_keywords.csv) · [`candidates_scored.csv`](candidates_scored.csv) · [`top20_keyword_clusters.csv`](top20_keyword_clusters.csv) · [`keyword_metrics_extracted.csv`](keyword_metrics_extracted.csv) · [`serp_evidence.csv`](serp_evidence.csv) · [`discovery_list.csv`](discovery_list.csv) · [`screenshot_audit.csv`](screenshot_audit.csv) · [`scripts/`](scripts/)
 
 ---
 
@@ -24,7 +24,7 @@ Files: [`top20_seo_opportunities.xlsx`](top20_seo_opportunities.xlsx) (main data
 
 | Evidence class | What it is | Reliability |
 |---|---|---|
-| **KP screenshot (OCR-extracted)** | Keyword Planner "Saved keywords" rows read from the screenshots by OCR and matched to the CSV keywords. 76 rows were checked by eye: 76/76 identical. | High for what is shown. Volumes are **bucketed ranges** (10–100, 100–1K, 1K–10K, 10K–100K…), so one bucket spans a factor of 10. |
+| **KP screenshot (OCR-extracted)** | Keyword Planner "Saved keywords" rows read from the screenshots by OCR and matched to the CSV keywords. All 881 visible rows in the Top-20 keyword groups were checked against the screenshots (0 volume errors; 7 bid/identity errors corrected), plus 76 earlier spot checks. | High for what is shown. Volumes are **bucketed ranges** (10–100, 100–1K, 1K–10K, 10K–100K…), so one bucket spans a factor of 10. |
 | **"—" in a screenshot** | Keyword Planner shows no data. | Treated as **unknown**, never zero. |
 | **Not visible** | The keyword is in the CSV but falls in a gap between stitched captures, or is in Turkey (no screenshot). | No metric. |
 | **Proxy SERP** | Web search with the native-language query, in standard and extended modes. Direct Google/Bing/DuckDuckGo fetches were blocked (HTTP 403). | Medium. It shows *who* competes, not exact Google positions in that country. |
@@ -46,18 +46,19 @@ Files: [`top20_seo_opportunities.xlsx`](top20_seo_opportunities.xlsx) (main data
 - Top-of-page bids are in **Indian Rupees (₹)**, the Ads account currency. They are comparable between keywords but are not local-currency CPCs.
 
 **What is usable**
-- 8,124 keywords have a matched Keyword Planner row. 6,165 of those carry a volume range: 372 at ≥10K–100K, 1,102 at 1K–10K and 1,943 at 100–1K.
-- Ads competition is shown for most rows. 2,586 rows have bid estimates.
+- 8,138 keywords have a matched Keyword Planner row. 6,171 of those carry a volume range: 372 at ≥10K–100K, 1,103 at 1K–10K and 1,944 at 100–1K.
+- Ads competition is shown for most rows. 2,592 rows have bid estimates.
 
 **Gaps and inconsistencies**
 1. **Turkey has no screenshot.** None of its 1,277 keywords has a metric, so Turkey is scored "no KP data" and cannot enter the Top 20 on evidence.
-2. **About 18% of non-Turkey keywords are invisible.** Each screenshot is about 12 stitched viewport captures of about 35 rows, and about 7 rows are skipped between captures. Each file covers an alphabetical span of about 500 keywords but shows about 424. That leaves 1,837 non-TR keywords (18.4%) without a metric, including the "uma 2026" family (MX) and most "validador cnpj alfanumérico" variants (BR).
+2. **About 18% of non-Turkey keywords are invisible.** Each screenshot is about 12 stitched viewport captures of about 35 rows, and about 7 rows are skipped between captures. Each file covers an alphabetical span of about 500 keywords but shows about 424. That leaves 1,823 non-TR keywords (18.3%) without a metric, including the "uma 2026" family (MX) and most "validador cnpj alfanumérico" variants (BR).
 3. **The CSVs contain no metrics.** Every file is one campaign ("Research xx"), one ad group ("All keywords"), broad match, sorted A–Z, with no in-file duplicates.
 4. **Keyword Planner normalises punctuation.** "nfs-e" appears as "nfs e", "pró-labore" as "pró labore" and "wa.me" as "wa me". After normalisation, **no screenshot keyword is missing from the CSV**. Sort order differs slightly for accented and upper-case words.
-5. **Overlapping captures were consistent.** ES1/ES2 and some DE/JP/PL files overlap (99 duplicate rows). The 8 apparent conflicts are all truncated keywords ("…") whose identity was inferred from order.
-6. **Japanese OCR is weaker.** 33 JP rows had their identity inferred from alphabetical order and 26 low-volume JP rows could not be matched. All JP finalist rows were verified by eye. Some JP keywords carry a dotted underline in the UI; the tooltip was not captured, so its meaning is unknown.
-7. **Change columns need caution.** Values of +900%, +9,900%, −90%, −99% and "+∞" (zero in the earlier period) are common. They are reliable for year-tagged keywords ("2026") and suspicious for evergreen heads. Several evergreen heads show −90% YoY: *verzugszinsen berechnen, hektar przeliczeniowy, calculadora modalidad 40, 1 mayam berapa gram, calculadora de liquidación*. I reduced their reliability score rather than guess the cause.
-8. **The lists are noisy.** Examples:
+5. **Overlapping captures were consistent.** ES1/ES2 and some DE/JP/PL files overlap (81 duplicate rows). The 5 apparent conflicts are all truncated keywords ("…") whose identity was inferred from order.
+6. **Keyword matching was corrected after verification.** The first matcher picked between near-identical keywords (singular/plural, 2025/2026, *xrechnung*/*e-rechnung*) by alphabetical position. It now prefers the closest match. Re-running it changed 34 of 8,223 row identities, including 13 German e-Rechnung rows that had been attached to XRechnung keywords.
+7. **Japanese OCR is weaker.** 7 JP rows had their identity inferred from alphabetical order and 5 low-volume JP rows could not be matched. All JP finalist rows were verified by eye. Some JP keywords carry a dotted underline in the UI; the tooltip was not captured, so its meaning is unknown.
+8. **Change columns need caution.** Values of +900%, +9,900%, −90%, −99% and "+∞" (zero in the earlier period) are common. They are reliable for year-tagged keywords ("2026") and suspicious for evergreen heads. Several evergreen heads show −90% YoY: *verzugszinsen berechnen, hektar przeliczeniowy, calculadora modalidad 40, 1 mayam berapa gram, calculadora de liquidación*. I reduced their reliability score rather than guess the cause.
+9. **The lists are noisy.** Examples:
    - Off-market language: the BR list contains "calculadora uala/upao/utm"; the ES list contains Peruvian SUNAT and "días hábiles argentina/colombia".
    - Physical products: "gerador a diesel", "conversor hdmi", "generador honda 6500 watts".
    - Navigational/official queries: "simulador caixa", "ksef gov", "irpf 2026 download", "hoy no circula".
@@ -120,6 +121,19 @@ Tie-break order: total → A → F → B → E. Missing organic evidence is neve
 
 These shares come from the evidence; no country quotas were applied.
 
+### Search volume of the Top 20
+
+Every number below is a **Google Keyword Planner range**: Sep 2025 – Aug 2026 average, location = market, all languages. The Ads account has no spend, so Keyword Planner only gives 10× buckets. Exact figures need a spending account or a third-party tool. {{VOLCHECK_NOTE}}
+
+How to read the columns:
+- **Primary keyword** is the main query each page targets.
+- **Keywords ≥10K / 1K–10K / 100–1K / 10–100** count how many keywords in the opportunity's cluster fall into each bucket.
+- **Cluster range** adds up the lower and upper bounds of every keyword that has a range. It is an indicative envelope: close variants can double-count, and "—" or invisible keywords add nothing.
+
+{{VOLUME_TABLE}}
+
+The keyword-by-keyword volumes for every opportunity are in [Appendix: search-volume detail](#appendix-search-volume-detail), [`top20_search_volume_keywords.csv`](top20_search_volume_keywords.csv) and the `Top20_Volume_Keywords` sheet.
+
 ### Detailed justification for each selection
 
 {{ENTRIES}}
@@ -130,7 +144,7 @@ These shares come from the evidence; no country quotas were applied.
 
 | Question | Finding | Revision made |
 |---|---|---|
-| Did we confuse advertiser competition with organic difficulty? | ~82% of rows with a competition value are "Low" Ads competition (4,855 of 5,941), including saturated SERPs. | Ads competition is excluded from A. A is based only on SERP evidence. |
+| Did we confuse advertiser competition with organic difficulty? | ~82% of rows with a competition value are "Low" Ads competition (4,856 of 5,947), including saturated SERPs. | Ads competition is excluded from A. A is based only on SERP evidence. |
 | Did weak first-pass SERPs mislead us? | **Yes.** Standard-mode search missed 6+ dedicated tools for plazos procesales, alqueire, UDIS, kwota słownie, weton, odmiana nazwisk, aksara, 住所 英語, KSeF, modalidad 40, cClassTrib and CNPJ. | Every finalist was re-checked in extended mode. A scores fell by 6–12 points. ES-03 dropped out (calculadoraplazos.es, Sepin). PL-01 KSeF dropped out (≥6 free visualisers launched in 2026). |
 | Did broad ranges inflate demand? | 1K–10K can mean 1,000. Sums of bucket bounds double-count variants. | Demand is scored on keyword counts per bucket, not summed volumes. Floors are shown only as indicative. Year-tagged and −90% YoY heads lose reliability points. |
 | Are we relying on weak translations? | No. Every keyword is native and comes from the supplied CSVs. JP_EN demand was measured with location = Japan. | JP_EN candidates are capped at reliability 2–3. The JP address tool carries the English page as a sibling instead of a separate entry. |
@@ -206,10 +220,18 @@ Also excluded before scoring were giant, navigational or product head terms. Exa
 3. **12-month volume series** for the Top-20 heads, especially the −90% YoY heads (DE-07, PL-08, MX-02) and the year-tagged BR-08.
 4. **Turkey Keyword Planner export.** The only route for TR candidates (kira artış, dönüm, 4'lük, rakamı yazıya) to compete.
 5. **Non-Japan locations for the English Japan queries.** This would size JP_EN-02 (pension refund), which is under-measured today but strongly monetisable.
-6. **The ~1,837 invisible keywords** in finalist clusters (e.g. "uma 2026", "validador cnpj alfanumérico"). Export the plans as CSV with metrics instead of screenshots.
+6. **The ~1,823 invisible keywords** in finalist clusters (e.g. "uma 2026", "validador cnpj alfanumérico"). Export the plans as CSV with metrics instead of screenshots.
 7. **Legal and actuarial sign-off** before launch: MX-01 (including whether the prima de antigüedad cap uses salario mínimo or UMA), BR-03/BR-02 data sources, BR-08, PL-04 (2026 rules), JP-07, DE-02/03/07.
 8. **Data licences:** SGJP/Morfeusz (PL-02), Polish word list (PL-05), Japan Post romaji (JP-01), Banxico SIE (MX-03), CNAE×LC116 correlation (BR-03).
 9. **Business-model choice.** RPM-led vs lead-gen-led changes the order of #4–#9 (ID-01, ID-09, JP-TXT and PL-05 are traffic-rich but RPM-poor).
+
+---
+
+## Appendix: search-volume detail
+
+The ten highest-volume keywords per opportunity are shown here; the full lists are in the CSV and the workbook.
+
+{{VOLUME_DETAIL}}
 
 ---
 

@@ -2,7 +2,7 @@
 
 *Prepared 2026-10-12 from the nine keyword CSVs and 22 Google Keyword Planner screenshots in this repository, plus live web research. Every metric below traces to a screenshot row or a cited URL. Nothing is estimated beyond what the evidence shows.*
 
-Files: [`top20_seo_opportunities.xlsx`](top20_seo_opportunities.xlsx) (main database) · [`top20.csv`](top20.csv) · [`candidates_scored.csv`](candidates_scored.csv) · [`top20_keyword_clusters.csv`](top20_keyword_clusters.csv) · [`keyword_metrics_extracted.csv`](keyword_metrics_extracted.csv) · [`serp_evidence.csv`](serp_evidence.csv) · [`discovery_list.csv`](discovery_list.csv) · [`screenshot_audit.csv`](screenshot_audit.csv) · [`scripts/`](scripts/)
+Files: [`top20_seo_opportunities.xlsx`](top20_seo_opportunities.xlsx) (main database) · [`top20.csv`](top20.csv) · [`top20_search_volume.csv`](top20_search_volume.csv) · [`top20_search_volume_keywords.csv`](top20_search_volume_keywords.csv) · [`candidates_scored.csv`](candidates_scored.csv) · [`top20_keyword_clusters.csv`](top20_keyword_clusters.csv) · [`keyword_metrics_extracted.csv`](keyword_metrics_extracted.csv) · [`serp_evidence.csv`](serp_evidence.csv) · [`discovery_list.csv`](discovery_list.csv) · [`screenshot_audit.csv`](screenshot_audit.csv) · [`scripts/`](scripts/)
 
 ---
 
@@ -24,7 +24,7 @@ Files: [`top20_seo_opportunities.xlsx`](top20_seo_opportunities.xlsx) (main data
 
 | Evidence class | What it is | Reliability |
 |---|---|---|
-| **KP screenshot (OCR-extracted)** | Keyword Planner "Saved keywords" rows read from the screenshots by OCR and matched to the CSV keywords. 76 rows were checked by eye: 76/76 identical. | High for what is shown. Volumes are **bucketed ranges** (10–100, 100–1K, 1K–10K, 10K–100K…), so one bucket spans a factor of 10. |
+| **KP screenshot (OCR-extracted)** | Keyword Planner "Saved keywords" rows read from the screenshots by OCR and matched to the CSV keywords. All 881 visible rows in the Top-20 keyword groups were checked against the screenshots (0 volume errors; 7 bid/identity errors corrected), plus 76 earlier spot checks. | High for what is shown. Volumes are **bucketed ranges** (10–100, 100–1K, 1K–10K, 10K–100K…), so one bucket spans a factor of 10. |
 | **"—" in a screenshot** | Keyword Planner shows no data. | Treated as **unknown**, never zero. |
 | **Not visible** | The keyword is in the CSV but falls in a gap between stitched captures, or is in Turkey (no screenshot). | No metric. |
 | **Proxy SERP** | Web search with the native-language query, in standard and extended modes. Direct Google/Bing/DuckDuckGo fetches were blocked (HTTP 403). | Medium. It shows *who* competes, not exact Google positions in that country. |
@@ -36,20 +36,18 @@ Files: [`top20_seo_opportunities.xlsx`](top20_seo_opportunities.xlsx) (main data
 
 **Inspected:** all 9 CSVs (11,238 keywords) and all 22 PNG screenshots (3840 px wide, 4,000–22,000 px tall).
 
-| market | screenshots | CSV_keywords | visible_in_screenshots | coverage_% | with_volume | shown_as_dash | not_visible | vol_10K_plus | vol_1K_10K | vol_100_1K | with_bids |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| BR | 4 | 2096 | 1689 | 80.6 | 1374 | 315 | 407 | 141 | 306 | 454 | 815 |
-| DE | 2 | 1046 | 831 | 79.4 | 483 | 348 | 215 | 12 | 47 | 127 | 232 |
-| ES | 3 | 1437 | 1126 | 78.4 | 939 | 187 | 311 | 64 | 211 | 320 | 413 |
-| ID | 4 | 1586 | 1339 | 84.4 | 963 | 376 | 247 | 28 | 124 | 315 | 234 |
-| JP | 2 | 845 | 691 | 81.8 | 476 | 215 | 154 | 4 | 34 | 116 | 38 |
-| JP_EN | 1 | 105 | 89 | 84.8 | 55 | 34 | 16 | 0 | 0 | 6 | 5 |
-| MX | 3 | 1540 | 1269 | 82.4 | 1062 | 207 | 271 | 66 | 194 | 349 | 497 |
-| PL | 3 | 1306 | 1090 | 83.5 | 813 | 277 | 216 | 57 | 186 | 256 | 352 |
-| TR | 0 | 1277 | 0 | 0.0 | 0 | 0 | 1277 | 0 | 0 | 0 | 0 |
+| rank | id | opportunity | market | keyword | avg_monthly_searches | three_month_change | yoy_change | ads_competition | top_bid_low_INR | top_bid_high_INR | source_screenshot | verification |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 20 | BR-09 | Shopee/marketplace fee calculator | BR | calculadora shopee | 1K – 10K | 0% | 0% | Low | 17.32 | 76.72 | BR1-(result google ads keyword planner).png | visually verified (workflow) |
+| 20 | BR-09 | Shopee/marketplace fee calculator | BR | calculadora shopee 2026 | 1K – 10K | 0% | +∞ | Low | 10.26 | 47.99 | BR1-(result google ads keyword planner).png | visually verified (workflow) |
+| 20 | BR-09 | Shopee/marketplace fee calculator | BR | código de tributação nacional entregador shopee | 100 – 1K | 0% | 0% | Low |  |  | BR2-(result google ads keyword planner).png | visually verified (workflow) |
+| 20 | BR-09 | Shopee/marketplace fee calculator | BR | simulador venda mercado livre | 100 – 1K | 0% | 0% | Low | 37.15 | 231.07 | BR4-(result google ads keyword planner).png | visually verified (workflow) |
+| 20 | BR-09 | Shopee/marketplace fee calculator | BR | conversor na shopee | 10 – 100 | 0% | 0% | High | 2.14 | 11.46 | BR2-(result google ads keyword planner).png | visually verified (workflow) |
+| 20 | BR-09 | Shopee/marketplace fee calculator | BR | código de tributação nacional shopee | 10 – 100 | 0% | 0% | Low |  |  | BR2-(result google ads keyword planner).png | visually verified (workflow) |
+| 20 | BR-09 | Shopee/marketplace fee calculator | BR | código de tributação nacional shopee entregador | 10 – 100 | 0% | +∞ | Low |  |  | BR2-(result google ads keyword planner).png | visually verified (workflow) |
 
 
-Totals: 11,238 CSV keywords; 8,124 visible with a matched row; 6,165 with a volume range; 1,959 shown as '—'; 3,114 not visible (incl. all 1,277 TR).
+Totals: 11,238 CSV keywords; 8,138 visible with a matched row; 6,171 with a volume range; 1,967 shown as '—'; 3,100 not visible (incl. all 1,277 TR).
 
 **Settings found in the screenshots** (read from each plan header):
 - Location is the market country. **The `jp_en` plan also uses Japan**, so English searches made from outside Japan are excluded.
@@ -57,18 +55,19 @@ Totals: 11,238 CSV keywords; 8,124 visible with a matched row; 6,165 with a volu
 - Top-of-page bids are in **Indian Rupees (₹)**, the Ads account currency. They are comparable between keywords but are not local-currency CPCs.
 
 **What is usable**
-- 8,124 keywords have a matched Keyword Planner row. 6,165 of those carry a volume range: 372 at ≥10K–100K, 1,102 at 1K–10K and 1,943 at 100–1K.
-- Ads competition is shown for most rows. 2,586 rows have bid estimates.
+- 8,138 keywords have a matched Keyword Planner row. 6,171 of those carry a volume range: 372 at ≥10K–100K, 1,103 at 1K–10K and 1,944 at 100–1K.
+- Ads competition is shown for most rows. 2,592 rows have bid estimates.
 
 **Gaps and inconsistencies**
 1. **Turkey has no screenshot.** None of its 1,277 keywords has a metric, so Turkey is scored "no KP data" and cannot enter the Top 20 on evidence.
-2. **About 18% of non-Turkey keywords are invisible.** Each screenshot is about 12 stitched viewport captures of about 35 rows, and about 7 rows are skipped between captures. Each file covers an alphabetical span of about 500 keywords but shows about 424. That leaves 1,837 non-TR keywords (18.4%) without a metric, including the "uma 2026" family (MX) and most "validador cnpj alfanumérico" variants (BR).
+2. **About 18% of non-Turkey keywords are invisible.** Each screenshot is about 12 stitched viewport captures of about 35 rows, and about 7 rows are skipped between captures. Each file covers an alphabetical span of about 500 keywords but shows about 424. That leaves 1,823 non-TR keywords (18.3%) without a metric, including the "uma 2026" family (MX) and most "validador cnpj alfanumérico" variants (BR).
 3. **The CSVs contain no metrics.** Every file is one campaign ("Research xx"), one ad group ("All keywords"), broad match, sorted A–Z, with no in-file duplicates.
 4. **Keyword Planner normalises punctuation.** "nfs-e" appears as "nfs e", "pró-labore" as "pró labore" and "wa.me" as "wa me". After normalisation, **no screenshot keyword is missing from the CSV**. Sort order differs slightly for accented and upper-case words.
-5. **Overlapping captures were consistent.** ES1/ES2 and some DE/JP/PL files overlap (99 duplicate rows). The 8 apparent conflicts are all truncated keywords ("…") whose identity was inferred from order.
-6. **Japanese OCR is weaker.** 33 JP rows had their identity inferred from alphabetical order and 26 low-volume JP rows could not be matched. All JP finalist rows were verified by eye. Some JP keywords carry a dotted underline in the UI; the tooltip was not captured, so its meaning is unknown.
-7. **Change columns need caution.** Values of +900%, +9,900%, −90%, −99% and "+∞" (zero in the earlier period) are common. They are reliable for year-tagged keywords ("2026") and suspicious for evergreen heads. Several evergreen heads show −90% YoY: *verzugszinsen berechnen, hektar przeliczeniowy, calculadora modalidad 40, 1 mayam berapa gram, calculadora de liquidación*. I reduced their reliability score rather than guess the cause.
-8. **The lists are noisy.** Examples:
+5. **Overlapping captures were consistent.** ES1/ES2 and some DE/JP/PL files overlap (81 duplicate rows). The 5 apparent conflicts are all truncated keywords ("…") whose identity was inferred from order.
+6. **Keyword matching was corrected after verification.** The first matcher picked between near-identical keywords (singular/plural, 2025/2026, *xrechnung*/*e-rechnung*) by alphabetical position. It now prefers the closest match. Re-running it changed 34 of 8,223 row identities, including 13 German e-Rechnung rows that had been attached to XRechnung keywords.
+7. **Japanese OCR is weaker.** 7 JP rows had their identity inferred from alphabetical order and 5 low-volume JP rows could not be matched. All JP finalist rows were verified by eye. Some JP keywords carry a dotted underline in the UI; the tooltip was not captured, so its meaning is unknown.
+8. **Change columns need caution.** Values of +900%, +9,900%, −90%, −99% and "+∞" (zero in the earlier period) are common. They are reliable for year-tagged keywords ("2026") and suspicious for evergreen heads. Several evergreen heads show −90% YoY: *verzugszinsen berechnen, hektar przeliczeniowy, calculadora modalidad 40, 1 mayam berapa gram, calculadora de liquidación*. I reduced their reliability score rather than guess the cause.
+9. **The lists are noisy.** Examples:
    - Off-market language: the BR list contains "calculadora uala/upao/utm"; the ES list contains Peruvian SUNAT and "días hábiles argentina/colombia".
    - Physical products: "gerador a diesel", "conversor hdmi", "generador honda 6500 watts".
    - Navigational/official queries: "simulador caixa", "ksef gov", "irpf 2026 download", "hoy no circula".
@@ -204,6 +203,41 @@ Tie-break order: total → A → F → B → E. Missing organic evidence is neve
 
 These shares come from the evidence; no country quotas were applied.
 
+### Search volume of the Top 20
+
+Every number below is a **Google Keyword Planner range**: Sep 2025 – Aug 2026 average, location = market, all languages. The Ads account has no spend, so Keyword Planner only gives 10× buckets. Exact figures need a spending account or a third-party tool. **Verified:** every visible keyword in the 20 keyword groups (881 rows) was compared against the screenshots by an agent workflow, and every disagreement was re-checked by two independent agents. **0 of 881 volume ranges were wrong.** Seven other errors were found and corrected: two top-of-page bids, and five keyword-identity mix-ups between near-identical keywords (singular/plural, *ncm*/*cnae*, a leading kanji). The keyword-matching step that caused the mix-ups was fixed and re-run on all 8,223 rows, which corrected 34 row identities in total.
+
+How to read the columns:
+- **Primary keyword** is the main query each page targets.
+- **Keywords ≥10K / 1K–10K / 100–1K / 10–100** count how many keywords in the opportunity's cluster fall into each bucket.
+- **Cluster range** adds up the lower and upper bounds of every keyword that has a range. It is an indicative envelope: close variants can double-count, and "—" or invisible keywords add nothing.
+
+| # | Opportunity | Market | Primary keyword | Primary: avg. monthly searches | 3-mo | YoY | Kw ≥10K | Kw 1K–10K | Kw 100–1K | Kw 10–100 | Kw "—" | Kw not visible | Cluster range (sum of bounds)/month |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | Alqueire ↔ hectare & agrarian-unit converter | BR | alqueire em hectare | 1K – 10K | 0% | 0% | 0 | 5 | 13 | 42 | 43 | 21 | 6,720 – 67,200 |
+| 2 | Aguinaldo / finiquito / liquidación suite | MX | calculadora aguinaldo | 10K – 100K | 0% | 0% | 4 | 5 | 8 | 11 | 12 | 13 | 45,910 – 459,100 |
+| 3 | NFS-e Código de Tributação Nacional finder | BR | código de tributação nacional | 10K – 100K | 0% | 0% | 1 | 3 | 7 | 35 | 10 | 10 | 14,050 – 140,500 |
+| 4 | Weton calculator & Javanese calendar | ID | hitung weton | 10K – 100K | 0% | 0% | 5 | 11 | 16 | 19 | 9 | 5 | 62,790 – 627,900 |
+| 5 | Japanese text toolkit (全角半角/旧字体/機種依存) | JP | 全角 半角 変換 | 10K – 100K | 0% | 0% | 1 | 4 | 15 | 31 | 23 | 6 | 15,810 – 158,100 |
+| 6 | UDIS ↔ pesos converter (Banxico) | MX | udis a pesos | 10K – 100K | +900% | 0% | 1 | 0 | 5 | 8 | 9 | 7 | 10,580 – 105,800 |
+| 7 | Słowa z liter word finder | PL | słowa z liter | 10K – 100K | 0% | 0% | 1 | 2 | 3 | 11 | 2 | 1 | 12,410 – 124,100 |
+| 8 | Indonesian date tools (umur/hari/jadian) | ID | kalkulator umur | 10K – 100K | 0% | 0% | 4 | 2 | 3 | 7 | 7 | 1 | 42,370 – 423,700 |
+| 9 | Amount-in-words engine (7 locales) | PL,BR,MX,ID,DE,ES,TR | kwota słownie | 10K – 100K | 0% | 0% | 2 | 3 | 22 | 57 | 39 | 34 | 25,770 – 257,710 |
+| 10 | HOAI fee calculator | DE | hoai rechner | 10K – 100K | 0% | 0% | 1 | 1 | 3 | 8 | 7 | 7 | 11,380 – 113,800 |
+| 11 | Odmiana nazwisk/imion + invitations | PL | odmiana nazwisk | 10K – 100K | 0% | 0% | 1 | 2 | 10 | 14 | 19 | 1 | 13,140 – 131,400 |
+| 12 | 住所 英語 変換 (JP + EN) | JP,JP_EN | 住所 英語 変換 | 10K – 100K | 0% | 0% | 1 | 3 | 6 | 37 | 25 | 10 | 13,970 – 139,700 |
+| 13 | IRRF / IR 2026–27 calculator | BR | calculadora irrf 2026 | 10K – 100K | -90% | +900% | 1 | 9 | 7 | 14 | 4 | 6 | 19,840 – 198,400 |
+| 14 | Staż pracy / urlop calculator | PL | kalkulator stażu pracy | 10K – 100K | 0% | 0% | 1 | 6 | 5 | 9 | 5 | 8 | 16,590 – 165,900 |
+| 15 | cClassTrib / CST IBS-CBS lookup | BR | cclasstrib | 10K – 100K | +900% | +900% | 1 | 2 | 12 | 23 | 18 | 17 | 13,430 – 134,310 |
+| 16 | 退職金 tax & take-home calculator | JP | 退職金 税金 計算 | 1K – 10K | 0% | 0% | 0 | 4 | 7 | 13 | 14 | 5 | 4,830 – 48,300 |
+| 17 | RVG fee & court-cost calculator | DE | rvg rechner | 10K – 100K | 0% | 0% | 1 | 2 | 3 | 0 | 4 | 7 | 12,300 – 123,000 |
+| 18 | Verzugszinsen calculator | DE | verzugszinsen berechnen | 10K – 100K | -90% | -90% | 1 | 2 | 3 | 12 | 9 | 6 | 12,420 – 124,200 |
+| 19 | Hektar przeliczeniowy & podatek rolny | PL | hektar przeliczeniowy | 1K – 10K | 0% | -90% | 0 | 1 | 6 | 11 | 3 | 1 | 1,710 – 17,100 |
+| 20 | Shopee/marketplace fee calculator | BR | calculadora shopee | 1K – 10K | 0% | 0% | 0 | 2 | 2 | 3 | 4 | 2 | 2,230 – 22,300 |
+
+
+The keyword-by-keyword volumes for every opportunity are in [Appendix: search-volume detail](#appendix-search-volume-detail), [`top20_search_volume_keywords.csv`](top20_search_volume_keywords.csv) and the `Top20_Volume_Keywords` sheet.
+
 ### Detailed justification for each selection
 
 ### 1. Agrarian land-unit converter: alqueire (paulista/mineiro/goiano/baiano/do Norte), tarefa, litro de terra, quadra ↔ hectare/m², by state  
@@ -289,7 +323,7 @@ These shares come from the evidence; no country quotas were applied.
 |---|---|
 | Primary keyword | **全角 半角 変換**: 10K – 100K avg. monthly searches; 3-mo 0%; YoY 0%; Ads competition Low; top-of-page bid nan |
 | Related keywords / intent cluster | 全角 半角 変換 (10K – 100K); 半角かな 変換 (1K – 10K); 半角カナ 変換 (1K – 10K); 旧字体 変換 (1K – 10K); 機種依存文字 チェッカー (1K – 10K); 全角 半角 変換 エクセル (100 – 1K); 全角 半角 変換 キーボード (100 – 1K); 全角 半角 変換 ショートカット (100 – 1K) |
-| Keyword Planner demand & source | Cluster: 51 keywords with volume (1 at ≥10K–100K, 4 at 1K–10K, 15 at 100–1K); sum of bucket lower bounds = 15,810/month (indicative floor; may double-count close variants); 7 cluster keywords are in the CSV but not visible in any screenshot. Source: JP1(result google ads keyword planner).png; location = market, All languages, Sep 2025 – Aug 2026. |
+| Keyword Planner demand & source | Cluster: 51 keywords with volume (1 at ≥10K–100K, 4 at 1K–10K, 15 at 100–1K); sum of bucket lower bounds = 15,810/month (indicative floor; may double-count close variants); 6 cluster keywords are in the CSV but not visible in any screenshot. Source: JP1(result google ads keyword planner).png; location = market, All languages, Sep 2025 – Aug 2026. |
 | Organic competition (A = 10/25) | Fragmented: extension listings, small tools, 2000s-era checkers; no brand. |
 | SERP evidence | S53 (standard, "全角 半角 変換 ツール オンライン"): [1](https://www.luft.co.jp/cgi/category-text-editing.php), [2](https://uravation.com/tools/zenkaku-hankaku/), [3](https://zenn.dev/kojimaru/articles/785480cf51d8e4), [4](https://chromeboard.com/extension/全角半角変換ツール-kfmmgidbicnfkokngkelgdkceddbdcoh)<br>S54 (standard, "機種依存文字 チェッカー オンライン 環境依存文字 チェック"): [1](https://atmarkit.itmedia.co.jp/ait/articles/2112/13/news018.html), [2](https://allabout.co.jp/gm/gc/23869/2/), [3](https://www.pref.osaka.lg.jp/documents/101375/kinshimoji.pdf) |
 | Competitors & weaknesses | uravation.com, LUFT tools, Chrome extensions, さぶみっと! 機種依存文字チェッカー, Akita University checker, dev articles. Weaknesses: fragmented single-purpose tools, several dated, few handle CSV in-browser. |
@@ -593,7 +627,7 @@ These shares come from the evidence; no country quotas were applied.
 
 | Question | Finding | Revision made |
 |---|---|---|
-| Did we confuse advertiser competition with organic difficulty? | ~82% of rows with a competition value are "Low" Ads competition (4,855 of 5,941), including saturated SERPs. | Ads competition is excluded from A. A is based only on SERP evidence. |
+| Did we confuse advertiser competition with organic difficulty? | ~82% of rows with a competition value are "Low" Ads competition (4,856 of 5,947), including saturated SERPs. | Ads competition is excluded from A. A is based only on SERP evidence. |
 | Did weak first-pass SERPs mislead us? | **Yes.** Standard-mode search missed 6+ dedicated tools for plazos procesales, alqueire, UDIS, kwota słownie, weton, odmiana nazwisk, aksara, 住所 英語, KSeF, modalidad 40, cClassTrib and CNPJ. | Every finalist was re-checked in extended mode. A scores fell by 6–12 points. ES-03 dropped out (calculadoraplazos.es, Sepin). PL-01 KSeF dropped out (≥6 free visualisers launched in 2026). |
 | Did broad ranges inflate demand? | 1K–10K can mean 1,000. Sums of bucket bounds double-count variants. | Demand is scored on keyword counts per bucket, not summed volumes. Floors are shown only as indicative. Year-tagged and −90% YoY heads lose reliability points. |
 | Are we relying on weak translations? | No. Every keyword is native and comes from the supplied CSVs. JP_EN demand was measured with location = Japan. | JP_EN candidates are capped at reliability 2–3. The JP address tool carries the English page as a sibling instead of a separate entry. |
@@ -711,10 +745,310 @@ Also excluded before scoring were giant, navigational or product head terms. Exa
 3. **12-month volume series** for the Top-20 heads, especially the −90% YoY heads (DE-07, PL-08, MX-02) and the year-tagged BR-08.
 4. **Turkey Keyword Planner export.** The only route for TR candidates (kira artış, dönüm, 4'lük, rakamı yazıya) to compete.
 5. **Non-Japan locations for the English Japan queries.** This would size JP_EN-02 (pension refund), which is under-measured today but strongly monetisable.
-6. **The ~1,837 invisible keywords** in finalist clusters (e.g. "uma 2026", "validador cnpj alfanumérico"). Export the plans as CSV with metrics instead of screenshots.
+6. **The ~1,823 invisible keywords** in finalist clusters (e.g. "uma 2026", "validador cnpj alfanumérico"). Export the plans as CSV with metrics instead of screenshots.
 7. **Legal and actuarial sign-off** before launch: MX-01 (including whether the prima de antigüedad cap uses salario mínimo or UMA), BR-03/BR-02 data sources, BR-08, PL-04 (2026 rules), JP-07, DE-02/03/07.
 8. **Data licences:** SGJP/Morfeusz (PL-02), Polish word list (PL-05), Japan Post romaji (JP-01), Banxico SIE (MX-03), CNAE×LC116 correlation (BR-03).
 9. **Business-model choice.** RPM-led vs lead-gen-led changes the order of #4–#9 (ID-01, ID-09, JP-TXT and PL-05 are traffic-rich but RPM-poor).
+
+---
+
+## Appendix: search-volume detail
+
+The ten highest-volume keywords per opportunity are shown here; the full lists are in the CSV and the workbook.
+
+**1. Alqueire ↔ hectare & agrarian-unit converter** (60 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| BR | alqueire em hectare | 1K – 10K | 0% | 0% | Low |
+| BR | alqueire goiano | 1K – 10K | 0% | 0% | Low |
+| BR | alqueire para hectare | 1K – 10K | 0% | 0% | Low |
+| BR | hectare para alqueire | 1K – 10K | 0% | 0% | Low |
+| BR | quantos hectares tem um alqueire | 1K – 10K | 0% | 0% | Low |
+| BR | 1 alqueire em hectares | 100 – 1K | 0% | 0% | Low |
+| BR | 1 litro de terra | 100 – 1K | 0% | 0% | Low |
+| BR | 1 litro de terra equivale a quantos hectares | 100 – 1K | 0% | +900% | Low |
+| BR | 1 litro de terra equivale a quantos metros quadrados | 100 – 1K | 0% | +900% | Low |
+| BR | alqueire baiano | 100 – 1K | 0% | 0% | Low |
+
+**2. Aguinaldo / finiquito / liquidación suite** (28 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| MX | calculadora aguinaldo | 10K – 100K | 0% | 0% | Low |
+| MX | calculadora de finiquito | 10K – 100K | 0% | 0% | Low |
+| MX | calculadora de liquidación | 10K – 100K | 0% | -90% | Low |
+| MX | calculadora finiquito | 10K – 100K | 0% | 0% | Low |
+| MX | calculadora finiquito 2026 | 1K – 10K | 0% | +∞ | Low |
+| MX | calculadora liquidacion | 1K – 10K | 0% | 0% | Low |
+| MX | calculadora liquidacion mexico | 1K – 10K | 0% | 0% | Low |
+| MX | calculadora prima vacacional | 1K – 10K | 0% | 0% | Low |
+| MX | calculadora vacaciones | 1K – 10K | 0% | -90% | Low |
+| MX | calculadora aguinaldo 2026 | 100 – 1K | 0% | +∞ | Low |
+
+**3. NFS-e Código de Tributação Nacional finder** (46 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| BR | código de tributação nacional | 10K – 100K | 0% | 0% | Low |
+| BR | código de tributação nacional mei | 1K – 10K | 0% | 0% | Low |
+| BR | código de tributação nacional mei prestação de serviços | 1K – 10K | 0% | 0% | Low |
+| BR | código de tributação nacional prestação de serviços | 1K – 10K | 0% | 0% | Low |
+| BR | código de tributação nacional como saber | 100 – 1K | 0% | 0% | Low |
+| BR | código de tributação nacional entregador shopee | 100 – 1K | 0% | 0% | Low |
+| BR | código de tributação nacional mei como saber | 100 – 1K | 0% | -90% | Low |
+| BR | código de tributação nacional nfse | 100 – 1K | 0% | +900% | Low |
+| BR | código de tributação nacional para emissão de nota fiscal mei | 100 – 1K | +900% | +900% | Low |
+| BR | código de tributação nacional serviço prestado | 100 – 1K | 0% | 0% | Low |
+
+**4. Weton calculator & Javanese calendar** (51 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| ID | hitung weton | 10K – 100K | 0% | 0% | Low |
+| ID | hitung weton jawa | 10K – 100K | 0% | +900% | Low |
+| ID | hitung weton jodoh | 10K – 100K | 0% | 0% | Low |
+| ID | kalender jawa 2026 | 10K – 100K | 0% | +900% | Low |
+| ID | weton hari ini | 10K – 100K | 0% | 0% | Low |
+| ID | cek weton lahir online | 1K – 10K | 0% | +900% | Low |
+| ID | hitung weton jodoh jawa | 1K – 10K | -90% | -90% | Low |
+| ID | hitung weton online | 1K – 10K | 0% | 0% | Low |
+| ID | kalender jawa 2026 januari sampai desember | 1K – 10K | 0% | 0% | Low |
+| ID | kalender jawa 2026 juli | 1K – 10K | 0% | +9,900% | Low |
+
+**5. Japanese text toolkit (全角半角/旧字体/機種依存)** (51 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| JP | 全角 半角 変換 | 10K – 100K | 0% | 0% | Low |
+| JP | 半角かな 変換 | 1K – 10K | 0% | 0% | Low |
+| JP | 半角カナ 変換 | 1K – 10K | 0% | 0% | Low |
+| JP | 旧字体 変換 | 1K – 10K | 0% | 0% | Low |
+| JP | 機種依存文字 チェッカー | 1K – 10K | 0% | 0% | Low |
+| JP | 全角 半角 変換 エクセル | 100 – 1K | 0% | 0% | Low |
+| JP | 全角 半角 変換 キーボード | 100 – 1K | -90% | -90% | Low |
+| JP | 全角 半角 変換 ショートカット | 100 – 1K | 0% | 0% | Low |
+| JP | 全角 半角 変換 スマホ | 100 – 1K | 0% | 0% | Low |
+| JP | 全角 半角 変換 ワード | 100 – 1K | 0% | 0% | Low |
+
+**6. UDIS ↔ pesos converter (Banxico)** (14 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| MX | udis a pesos | 10K – 100K | +900% | 0% | Low |
+| MX | calculadora udis | 100 – 1K | 0% | 0% | Low |
+| MX | calculadora udis a pesos | 100 – 1K | 0% | 0% | Low |
+| MX | udis a pesos calculadora | 100 – 1K | 0% | 0% | Low |
+| MX | udis a pesos hoy | 100 – 1K | 0% | 0% | Low |
+| MX | udis a pesos mexicanos | 100 – 1K | 0% | 0% | Low |
+| MX | conversor de udis | 10 – 100 | 0% | 0% | Low |
+| MX | conversor de udis a pesos | 10 – 100 | 0% | 0% | Low |
+| MX | udis a pesos 2025 | 10 – 100 | 0% | -90% | Low |
+| MX | udis a pesos 2026 | 10 – 100 | 0% | +∞ | Low |
+
+**7. Słowa z liter word finder** (17 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| PL | słowa z liter | 10K – 100K | 0% | 0% | Low |
+| PL | układanie słów z liter | 1K – 10K | 0% | 0% | Low |
+| PL | układanie słów z liter gra | 1K – 10K | +900% | +900% | Low |
+| PL | słowa z literą ź | 100 – 1K | 0% | 0% | Low |
+| PL | układanie słów z liter gra online | 100 – 1K | 0% | +900% | Low |
+| PL | układanie słów z liter gra po polsku | 100 – 1K | 0% | 0% | Low |
+| PL | słowa z liter gra | 10 – 100 | 0% | 0% | Low |
+| PL | słowa z literą h | 10 – 100 | 0% | 0% | Low |
+| PL | słowa z literą r | 10 – 100 | 0% | 0% | Low |
+| PL | słowa z literą u | 10 – 100 | 0% | 0% | Low |
+
+**8. Indonesian date tools (umur/hari/jadian)** (16 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| ID | kalkulator hari | 10K – 100K | 0% | 0% | Low |
+| ID | kalkulator jadian | 10K – 100K | 0% | 0% | Low |
+| ID | kalkulator tanggal | 10K – 100K | 0% | +900% | Low |
+| ID | kalkulator umur | 10K – 100K | 0% | 0% | Low |
+| ID | kalkulator bulan | 1K – 10K | 0% | 0% | Low |
+| ID | kalkulator umur online | 1K – 10K | -90% | -90% | Low |
+| ID | hitung hari kerja | 100 – 1K | 0% | 0% | Low |
+| ID | kalkulator hari kerja | 100 – 1K | 0% | 0% | Low |
+| ID | kalkulator tanggal pernikahan jawa 2026 | 100 – 1K | 0% | +900% | Low |
+| ID | cara hitung hari kerja | 10 – 100 | 0% | 0% | Low |
+
+**9. Amount-in-words engine (7 locales)** (85 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| PL | kwota słownie | 10K – 100K | 0% | 0% | Low |
+| BR | número por extenso | 10K – 100K | 0% | 0% | Low |
+| MX | cantidad con letra | 1K – 10K | 0% | 0% | Low |
+| ID | terbilang rupiah | 1K – 10K | 0% | 0% | Low |
+| DE | zahl in worten | 1K – 10K | 0% | 0% | Low |
+| ID | angka terbilang | 100 – 1K | 0% | 0% | Low |
+| ID | angka terbilang online | 100 – 1K | 0% | 0% | Low |
+| MX | cantidad con letra y numero | 100 – 1K | 0% | 0% | Low |
+| ES | convertir números a letras | 100 – 1K | 0% | 0% | Low |
+| ES | convertir números a letras euros | 100 – 1K | -90% | -90% | Low |
+
+**10. HOAI fee calculator** (13 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| DE | hoai rechner | 10K – 100K | 0% | 0% | Low |
+| DE | hoai rechner online | 1K – 10K | 0% | 0% | Medium |
+| DE | hoai rechner kostenlos | 100 – 1K | 0% | 0% | Medium |
+| DE | hoai rechner kostenlos online | 100 – 1K | +900% | +900% | Medium |
+| DE | hoai rechner online kostenlos | 100 – 1K | +900% | +900% | Medium |
+| DE | hoai rechner excel kostenlos | 10 – 100 | 0% | 0% | Low |
+| DE | hoai rechner kostenlos bauer | 10 – 100 | 0% | 0% | Medium |
+| DE | hoai rechner kostenlos download | 10 – 100 | +∞ | 0% | High |
+| DE | hoai rechner kostenlos download excel | 10 – 100 | 0% | 0% | Low |
+| DE | hoai rechner net | 10 – 100 | 0% | 0% | Low |
+
+**11. Odmiana nazwisk/imion + invitations** (27 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| PL | odmiana nazwisk | 10K – 100K | 0% | 0% | Low |
+| PL | odmiana nazwisk online | 1K – 10K | 0% | 0% | Low |
+| PL | odmiana nazwisk przez przypadki | 1K – 10K | -90% | 0% | Low |
+| PL | odmiana imion | 100 – 1K | -90% | 0% | Low |
+| PL | odmiana imion i nazwisk | 100 – 1K | -90% | 0% | Low |
+| PL | odmiana imion i nazwisk online | 100 – 1K | 0% | 0% | Low |
+| PL | odmiana imion przez przypadki | 100 – 1K | -90% | 0% | Low |
+| PL | odmiana nazwisk do zaproszeń | 100 – 1K | -90% | -90% | Low |
+| PL | odmiana nazwisk dwuczłonowych | 100 – 1K | -90% | -90% | Low |
+| PL | odmiana nazwisk na zaproszeniach | 100 – 1K | 0% | 0% | Low |
+
+**12. 住所 英語 変換 (JP + EN)** (47 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| JP | 住所 英語 変換 | 10K – 100K | 0% | 0% | Low |
+| JP | 住所 英語 変換 サイト | 1K – 10K | 0% | -90% | Low |
+| JP | 住所 英語表記 変換 | 1K – 10K | 0% | 0% | Low |
+| JP | 英語 住所 変換 | 1K – 10K | 0% | 0% | Low |
+| JP | エクセル 住所 分割 市区町村以下 | 100 – 1K | 0% | -90% | Low |
+| JP | エクセル 住所 分割 番地 以降 | 100 – 1K | -90% | 0% | Low |
+| JP | 住所 正規化 | 100 – 1K | 0% | 0% | Low |
+| JP | 住所 英語 変換 一括 | 100 – 1K | 0% | -90% | Low |
+| JP | 住所 英語 変換ツール | 100 – 1K | 0% | +900% | Low |
+| JP | 住所 英語 変換英語 | 100 – 1K | 0% | +900% | Low |
+
+**13. IRRF / IR 2026–27 calculator** (31 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| BR | calculadora irrf 2026 | 10K – 100K | -90% | +900% | Low |
+| BR | calculadora imposto de renda 2026 | 1K – 10K | 0% | +900% | Low |
+| BR | calculadora irpf | 1K – 10K | 0% | 0% | Low |
+| BR | calculadora irpf 2026 | 1K – 10K | 0% | +9,900% | Low |
+| BR | calculadora irpf mensal | 1K – 10K | 0% | -90% | Low |
+| BR | isenção imposto de renda 5 mil | 1K – 10K | 0% | -90% | Low |
+| BR | simulador imposto de renda | 1K – 10K | 0% | 0% | Low |
+| BR | simulador imposto de renda 2026 | 1K – 10K | 0% | +900% | Low |
+| BR | simulador irpf | 1K – 10K | -90% | -90% | Low |
+| BR | simulador irrf 2026 | 1K – 10K | 0% | +9,900% | Low |
+
+**14. Staż pracy / urlop calculator** (21 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| PL | kalkulator stażu pracy | 10K – 100K | 0% | 0% | Low |
+| PL | kalkulator ekwiwalentu za urlop | 1K – 10K | 0% | 0% | Low |
+| PL | kalkulator ekwiwalentu za urlop 2026 | 1K – 10K | 0% | +∞ | Low |
+| PL | kalkulator lat pracy | 1K – 10K | 0% | 0% | Low |
+| PL | kalkulator stażu pracy gofin | 1K – 10K | 0% | 0% | Low |
+| PL | kalkulator urlopu | 1K – 10K | 0% | 0% | Low |
+| PL | kalkulator urlopu macierzyńskiego | 1K – 10K | 0% | 0% | Low |
+| PL | kalkulator stażu pracy do nagrody jubileuszowej | 100 – 1K | 0% | +900% | Low |
+| PL | kalkulator stażu pracy do urlopu | 100 – 1K | -90% | -90% | Low |
+| PL | kalkulator stażu pracy infor | 100 – 1K | 0% | 0% | Low |
+
+**15. cClassTrib / CST IBS-CBS lookup** (39 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| BR | cclasstrib | 10K – 100K | +900% | +900% | Low |
+| BR | cclasstrib tabela | 1K – 10K | 0% | +900% | Low |
+| BR | split payment reforma tributária | 1K – 10K | 0% | 0% | Low |
+| BR | calculadora ibs cbs | 100 – 1K | 0% | 0% | Low |
+| BR | calculadora ibs e cbs receita federal | 100 – 1K | +900% | +∞ | Low |
+| BR | cclasstrib ibs e cbs | 100 – 1K | 0% | +900% | Low |
+| BR | cclasstrib o que é | 100 – 1K | 0% | 0% | Low |
+| BR | cclasstrib por ncm | 100 – 1K | +900% | +∞ | Low |
+| BR | cclasstrib reforma tributária | 100 – 1K | 0% | 0% | Low |
+| BR | consulta cclasstrib por ncm | 100 – 1K | 0% | +∞ | Low |
+
+**16. 退職金 tax & take-home calculator** (24 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| JP | 退職所得 計算 | 1K – 10K | -90% | -90% | Low |
+| JP | 退職金 税金 シミュレーション | 1K – 10K | 0% | 0% | Low |
+| JP | 退職金 税金 計算 | 1K – 10K | 0% | 0% | Low |
+| JP | 退職金 税金 計算 シミュレーション | 1K – 10K | 0% | 0% | Low |
+| JP | 退職所得 計算ツール | 100 – 1K | 0% | 0% | Low |
+| JP | 退職所得 計算方法 | 100 – 1K | 0% | 0% | Low |
+| JP | 退職所得控除 計算式 | 100 – 1K | 0% | 0% | Low |
+| JP | 退職金 年金 税金 シミュレーション | 100 – 1K | 0% | -90% | Low |
+| JP | 退職金 手取り 計算 | 100 – 1K | 0% | 0% | Low |
+| JP | 退職金 税金 計算 ツール | 100 – 1K | 0% | +900% | Low |
+
+**17. RVG fee & court-cost calculator** (6 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| DE | rvg rechner | 10K – 100K | 0% | 0% | Low |
+| DE | rvg rechner 2025 | 1K – 10K | 0% | -90% | Low |
+| DE | rvg rechner 2026 | 1K – 10K | 0% | +∞ | Low |
+| DE | rvg rechner 2024 | 100 – 1K | 0% | -90% | Low |
+| DE | rvg rechner soldan | 100 – 1K | 0% | 0% | Low |
+| DE | rvg rechner strafrecht | 100 – 1K | 0% | -90% | Low |
+
+**18. Verzugszinsen calculator** (18 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| DE | verzugszinsen berechnen | 10K – 100K | -90% | -90% | Low |
+| DE | basiszinssatz 2026 | 1K – 10K | -90% | +∞ | Low |
+| DE | verzugszinsen rechner | 1K – 10K | -90% | -90% | Low |
+| DE | basiszinssatz 2026 rechner | 100 – 1K | 0% | +∞ | Low |
+| DE | verzugszinsen berechnen formel | 100 – 1K | 0% | 0% | Low |
+| DE | verzugszinsen berechnen online | 100 – 1K | -90% | -90% | Low |
+| DE | basiszinssatz 2026 ezb | 10 – 100 | 0% | +∞ | Low |
+| DE | basiszinssatz 2026 prognose | 10 – 100 | -90% | +∞ | Low |
+| DE | basiszinssatz 2026 tabelle | 10 – 100 | 0% | +∞ | Low |
+| DE | basiszinssatz 2026 verzugszinsen | 10 – 100 | 0% | +∞ | Low |
+
+**19. Hektar przeliczeniowy & podatek rolny** (18 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| PL | hektar przeliczeniowy | 1K – 10K | 0% | -90% | Low |
+| PL | hektar przeliczeniowy 2024 | 100 – 1K | 0% | -90% | Low |
+| PL | hektar przeliczeniowy 2025 | 100 – 1K | 0% | 0% | Low |
+| PL | hektar przeliczeniowy 2026 | 100 – 1K | 0% | +∞ | Low |
+| PL | hektar przeliczeniowy tabela | 100 – 1K | -90% | 0% | Low |
+| PL | kalkulator hektar przeliczeniowy | 100 – 1K | 0% | 0% | Low |
+| PL | morga ile to hektarów | 100 – 1K | 0% | 0% | Low |
+| PL | hektar fizyczny a przeliczeniowy kalkulator | 10 – 100 | 0% | 0% | Low |
+| PL | hektar przeliczeniowy 2023 kalkulator | 10 – 100 | -100% | 0% |  |
+| PL | hektar przeliczeniowy 2024 kalkulator | 10 – 100 | 0% | 0% | Low |
+
+**20. Shopee/marketplace fee calculator** (7 keywords with a range)
+
+| Market | Keyword | Avg. monthly searches | 3-mo | YoY | Ads comp. |
+|---|---|---|---|---|---|
+| BR | calculadora shopee | 1K – 10K | 0% | 0% | Low |
+| BR | calculadora shopee 2026 | 1K – 10K | 0% | +∞ | Low |
+| BR | código de tributação nacional entregador shopee | 100 – 1K | 0% | 0% | Low |
+| BR | simulador venda mercado livre | 100 – 1K | 0% | 0% | Low |
+| BR | conversor na shopee | 10 – 100 | 0% | 0% | High |
+| BR | código de tributação nacional shopee | 10 – 100 | 0% | 0% | Low |
+| BR | código de tributação nacional shopee entregador | 10 – 100 | 0% | +∞ | Low |
+
 
 ---
 

@@ -6,6 +6,28 @@ COUNTRY={'BR':'Brazil','DE':'Germany','ES':'Spain','ID':'Indonesia','JP':'Japan'
 VOLRANK={'0 – 10':0,'10 – 100':1,'100 – 1K':2,'1K – 10K':3,'10K – 100K':4,'100K – 1M':5,'1M – 10M':6}
 m=pd.read_csv(os.path.join(S,'ocr_matched.csv')).fillna('')
 m=m[m.status!='unmatched']
+kov_path=os.path.join(S,'volcheck','keyword_overrides.csv')
+if os.path.exists(kov_path):
+    for o in pd.read_csv(kov_path).itertuples():
+        idx=m[(m.file==o.file)&(m.y==o.y)].index
+        m.loc[idx,'keyword']=o.new_keyword; m.loc[idx,'status']='matched (visually corrected)'
+    print('applied keyword overrides')
+# apply visually verified corrections (volcheck workflow) if present
+ov_path=os.path.join(S,'volcheck','overrides.csv')
+if os.path.exists(ov_path):
+    ov=pd.read_csv(ov_path).fillna('')
+    FIELD={'vol':'vol','3m':'m3','yoy':'yoy','comp':'comp','bid_low':'bid_lo','bid_high':'bid_hi'}
+    for o in ov.itertuples():
+        col=FIELD.get(o.field)
+        if not col: continue
+        val=str(o.value).strip()
+        if val in ('—','-','–'): val=''
+        if col in ('bid_lo','bid_hi'):
+            val=float(val.replace('₹','').replace(',','')) if val else float('nan')
+        idx=m[(m.market==o.market)&(m.keyword==o.keyword)].index
+        m.loc[idx,col]=val
+        m.loc[idx,'corrected']='visually corrected: '+o.field
+    print('applied overrides:',len(ov))
 # per keyword: consolidate duplicates (overlapping screenshots)
 def consolidate(g):
     g=g.copy()
@@ -24,7 +46,8 @@ for mk,f in CSV.items():
     for _,k in kw.iterrows():
         rows.append(dict(market=mk,country=COUNTRY[mk],language=LANG[mk],source_file=f+'.csv',keyword=k['Keyword'],campaign=k['Campaign'],ad_group=k['Ad group']))
 base=pd.DataFrame(rows)
-cc=c.rename(columns={'files':'screenshot_files'})[['market','keyword','screenshot_files','vol','m3','yoy','comp','bid_lo','bid_hi','status','match_score','trunc_ambiguous','vol_conflict','n_obs','ocr_kw']]
+if 'corrected' not in c.columns: c['corrected']=''
+cc=c.rename(columns={'files':'screenshot_files'})[['market','keyword','screenshot_files','vol','m3','yoy','comp','bid_lo','bid_hi','status','match_score','trunc_ambiguous','vol_conflict','n_obs','ocr_kw','corrected']]
 out=base.merge(cc,on=['market','keyword'],how='left')
 out['in_screenshot']=out.screenshot_files.notna()
 out['vol_rank']=out.vol.map(VOLRANK)

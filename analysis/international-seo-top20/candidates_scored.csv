@@ -41,7 +41,7 @@ rank,id,markets,concept,primary_keyword,primary_vol,kw_with_volume,n_10k_plus,n_
 ,ES-04,ES,Actualizar renta alquiler (IPC/IRAV),actualizar renta alquiler,1K – 10K,26,0,1,11,2240,8,13,18,9,6,7,4,65,True,REJECTED,65 pts: official INE/Ministerio tools.,Low,S30
 ,JP_EN-02,JP_EN,Japan pension lump-sum refund calculator (English),japan pension lump sum withdrawal calculator,10 – 100,8,0,0,1,170,13,4,19,10,6,8,4,64,True,REJECTED,64 pts: demand unmeasurable (KP location = Japan only: 10–100); >=3 agent-run estimators.,Low,S68;S69
 ,DE-09,DE,Brennholz Festmeter/Raummeter converter,festmeter rechner,1K – 10K,32,0,1,7,1940,12,11,18,10,4,4,5,64,True,REJECTED,"64 pts: small demand, low value.",Low,S24
-,DE-14,DE,E-Rechnung viewer/validator,xrechnung viewer,100 – 1K,91,0,7,27,10270,6,14,17,7,7,10,3,64,False,REJECTED,"64 pts, FAILS gate: SaaS brands; High ad competition.",Low,S18
+,DE-14,DE,E-Rechnung viewer/validator,xrechnung viewer,100 – 1K,96,0,8,27,11310,6,14,17,7,7,10,3,64,False,REJECTED,"64 pts, FAILS gate: SaaS brands; High ad competition.",Low,S18
 ,JP_EN-01,JP_EN,Japan take-home pay calculator (English),japan take home pay calculator,10 – 100,23,0,0,4,570,13,3,19,10,7,8,3,63,True,REJECTED,63 pts: demand unmeasurable with Japan-only location.,Low,S67
 ,DE-05,DE,Kündigungsfrist-Rechner,kündigungsfrist rechner,1K – 10K,21,3,5,7,35760,6,17,15,7,7,7,4,63,False,REJECTED,"63 pts, FAILS gate.",Low,S26
 ,MX-05,MX,Foto tamaño infantil/título print-sheet maker,foto tamaño infantil,10K – 100K,17,1,2,5,12590,8,18,14,8,6,5,3,62,True,REJECTED,62 pts: passport-photo.online + print fulfilment moat.,Low,S78
