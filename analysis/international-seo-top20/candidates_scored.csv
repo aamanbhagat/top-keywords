@@ -1,0 +1,61 @@
+rank,id,markets,concept,primary_keyword,primary_vol,kw_with_volume,n_10k_plus,n_1k_10k,n_100_1k,cluster_floor_sum,A,B,C,D,E,F,G,total,organic_gate_pass,decision,reason,confidence,serp_ids
+1,BR-01,BR,"Agrarian land-unit converter: alqueire (paulista/mineiro/goiano/baiano/do Norte), tarefa, litro de terra, quadra ↔ hectare/m², by state",alqueire em hectare,1K – 10K,60,0,5,13,6720,14,16,19,10,8,6,5,78,True,TOP 20,,Medium-High,S04;S05
+2,MX-01,MX,"Ley Federal del Trabajo payout suite: aguinaldo, finiquito, liquidación, prima vacacional, vacaciones (2026 UMA/SM, ISR exempt)",calculadora aguinaldo,10K – 100K,28,4,5,8,45910,10,20,19,10,9,6,4,78,True,TOP 20,,Medium,S70;S71;S72
+3,BR-03,BR,"Código de Tributação Nacional (cTribNac) finder for NFS-e Nacional — search by service, CNAE, LC 116 item, NBS",código de tributação nacional,10K – 100K,46,1,3,7,14050,12,18,17,10,9,8,3,77,True,TOP 20,,Medium,S08;S09
+,PL-11,PL,Odsetki ustawowe / podatkowe calculator,kalkulator odsetek ustawowych,10K – 100K,16,4,3,6,43630,7,20,19,10,7,8,4,75,False,REJECTED,"75 pts but FAILS organic gate (A<8): bankier.pl, infor.pl, fakturownia.pl, gofin.",Low,S95
+4,ID-01,ID,"Weton & Javanese calendar: cek weton/neptu, weton jodoh, weton hari ini, kalender Jawa 2026/2027",hitung weton,10K – 100K,51,5,11,16,62790,12,20,17,9,10,2,4,74,True,TOP 20,,Medium,S36;S37;S38
+5,JP-TXT,JP,"Japanese text-normalisation toolkit: 全角/半角, 半角カナ, 旧字体/異体字, 機種依存文字・環境依存文字 checker",全角 半角 変換,10K – 100K,51,1,4,15,15810,10,19,19,10,8,2,5,73,True,TOP 20,,Medium,S53;S54
+6,MX-03,MX,"UDIS ↔ pesos converter with official Banxico values by date (+ UMA, history tables)",udis a pesos,10K – 100K,14,1,0,5,10580,9,17,20,10,7,5,5,73,True,TOP 20,,Medium,S75;S76
+7,PL-05,PL,Word finder from letters (słowa z liter) with Scrabble/Literaki scoring and anagrams,słowa z liter,10K – 100K,17,1,2,3,12410,10,18,18,10,9,3,4,72,True,TOP 20,,Medium-Low,S88
+8,ID-09,ID,"Indonesian date tools: kalkulator umur, selisih hari/tanggal, kalkulator jadian, hari kerja (with libur nasional & cuti bersama)",kalkulator umur,10K – 100K,16,4,2,3,42370,10,19,19,10,7,2,5,72,True,TOP 20,,Medium-Low,S46;S47;S48
+9,NUM,"PL,BR,MX,ID,DE,ES,TR","Amount-in-words engine: kwota słownie, número/valor por extenso, cantidad con letra, terbilang, Zahl in Worten (cheque/invoice formats)",kwota słownie,10K – 100K,85,2,3,22,25770,8,18,19,10,8,5,4,72,True,TOP 20,,Medium-Low,S11;S12;S49;S84;S85
+10,DE-02,DE,"HOAI 2021 fee calculator (Honorarzonen, Leistungsphasen, Umbauzuschlag, Nebenkosten) per Leistungsbild",hoai rechner,10K – 100K,13,1,1,3,11380,11,16,17,10,5,9,3,71,True,TOP 20,,Medium-Low,S21
+11,PL-02,PL,Surname & first-name declension (odmiana nazwisk/imion) + wedding-invitation wording generator,odmiana nazwisk,10K – 100K,27,1,2,10,13140,11,18,16,10,9,4,3,71,True,TOP 20,,Medium,S82;S83
+12,JP-01,"JP,JP_EN","Japanese address → English converter (postcode lookup, 番地/建物 handling, Amazon/PayPal/EMS formats) with JP/EN page pair",住所 英語 変換,10K – 100K,47,1,3,6,13970,9,18,17,10,8,5,4,71,True,TOP 20,,Medium,S50;S51;S52
+13,BR-08,BR,"IRRF/IR calculator under Lei 15.270/2025 (exemption to R$5,000, reducer to R$7,350), 2026→2027 tables",calculadora irrf 2026,10K – 100K,31,1,9,7,19840,9,18,19,10,7,5,3,71,True,TOP 20,,Low-Medium,S14
+14,PL-04,PL,Length-of-service calculator 2026 (staż pracy incl. umowa zlecenie/JDG periods) + annual-leave and ekwiwalent calculators,kalkulator stażu pracy,10K – 100K,21,1,6,5,16590,8,19,18,10,7,6,3,71,True,TOP 20,,Medium-Low,S86;S87
+15,BR-02,BR,cClassTrib / CST IBS-CBS lookup by NCM/NBS with legal basis and reductions (tax reform),cclasstrib,10K – 100K,39,1,2,12,13430,9,16,16,9,9,9,2,70,True,TOP 20,,Medium-Low,S06;S07
+16,JP-07,JP,"Retirement-allowance tax & take-home calculator (退職所得控除, 役員/短期, 住民税, iDeCo一時金調整)",退職金 税金 計算,1K – 10K,24,0,4,7,4830,9,15,19,9,6,8,4,70,True,TOP 20,,Medium-Low,S56
+17,DE-03,DE,RVG lawyer-fee + court-cost (GKG) calculator after KostBRÄG 2025,rvg rechner,10K – 100K,6,1,2,3,12300,8,17,18,10,5,9,3,70,True,TOP 20,,Low-Medium,S22
+18,DE-07,DE,"Late-payment interest calculator (Verzugszinsen) with Basiszinssatz history, partial payments, B2B 40 € flat fee",verzugszinsen berechnen,10K – 100K,18,1,2,3,12420,8,16,19,10,5,8,4,70,True,TOP 20,,Low-Medium,S29
+19,PL-08,PL,"Converted-hectare (hektar przeliczeniowy) & agricultural-tax calculator by gmina/okręg, land class",hektar przeliczeniowy,1K – 10K,18,0,1,6,1710,18,12,18,9,4,4,4,69,True,TOP 20,,Medium,S91;S92
+20,BR-09,BR,Marketplace seller fee & profit calculator (Shopee 2026 price-band fees; Mercado Livre next),calculadora shopee,1K – 10K,7,0,2,2,2230,10,13,19,10,7,8,2,69,True,TOP 20,,Medium-Low,S15;S16
+,ES-01,ES,Nota PAU / nota de corte calculator by community & degree,calculadora nota pau,10K – 100K,14,3,2,3,32360,10,18,17,9,9,4,2,69,True,REJECTED,69 pts: yaq.es specialist + universities; 17 regional rule sets; seasonal (May–Jul).,Medium-Low,S31
+,ID-02,ID,Aksara Jawa/Sunda/Bali/Pegon transliterator,translate aksara jawa,10K – 100K,46,4,7,17,48880,10,20,16,9,9,2,3,69,True,REJECTED,69 pts: >=6 tools incl. photo-scan OCR; ads-only low-RPM; misses top 20 on tie-break (F).,Medium,S39;S40
+,MX-02,MX,Modalidad 40 / pensión IMSS Ley 73 calculator,calculadora modalidad 40,1K – 10K,25,0,7,9,7990,8,15,17,10,7,9,3,69,True,REJECTED,69 pts: >=10 dedicated calculators; head shows -90% YoY.,Low-Medium,S73;S74
+,ID-04,ID,Traditional land units (tumbak/bata/ru/bau),1 tumbak berapa meter,1K – 10K,10,0,2,5,2530,13,13,19,9,5,4,5,68,True,REJECTED,68 pts: folded into BR-01 as a localisation (same engine).,Medium,S42;S43
+,JP-05,JP,坪・反・畳 land-unit converter,一反 何坪,1K – 10K,49,0,4,12,5530,8,15,19,9,6,6,5,68,True,REJECTED,68 pts: >=7 converters + real-estate majors; folded into BR-01 engine as optional locale.,Low-Medium,S59;S60
+,PL-01,PL,KSeF XML invoice visualiser / validator / numer KSeF,wizualizacja faktury ksef,1K – 10K,57,0,4,24,6690,9,13,17,8,7,10,3,67,True,REJECTED,"67 pts: >=6 free in-browser visualisers launched in 2026; head term ""ksef gov"" is navigational.",Low-Medium,S80;S81
+,ES-03,ES,Plazos procesales / días hábiles calculator,calculadora plazos procesales,1K – 10K,21,0,4,3,4440,8,14,18,10,6,9,2,67,True,REJECTED,"67 pts: extended search found >=6 Spanish tools incl. Sepin; ""calculadora cgpj/poder judicial"" suggests navigational demand.",Low,S33;S34;S35
+,DE-01,DE,IHK Notenschlüssel / Punkte→Note,ihk notenschlüssel,10K – 100K,23,1,3,5,13640,8,18,18,9,6,3,5,67,True,REJECTED,67 pts: fixed nationwide key; calculator networks own it; low value.,Low,S20
+,BR-07,BR,Pensão alimentícia calculator (incl. atrasada),calculadora de pensão alimentícia,1K – 10K,27,0,2,7,2880,12,14,14,9,6,8,3,66,True,REJECTED,66 pts: judicial discretion limits tool fit; legal YMYL.,Low-Medium,S13
+,DE-06,DE,Silbentrennung,silben trennen,10K – 100K,18,1,0,7,10800,11,16,17,10,5,3,4,66,True,REJECTED,66 pts: silbentrennung24/Duden; low value.,Low,S25
+,ES-02,ES,Letra DNI/NIE/NIF calculator & validator,calculadora letra dni,10K – 100K,19,1,1,6,11710,11,15,19,9,4,3,5,66,True,REJECTED,"66 pts: trivial, low value, -90% YoY on head.",Low,S32
+,JP-08,JP,傷病手当金 calculator,傷病手当金 計算ツール,1K – 10K,7,0,2,3,2320,10,13,18,9,5,7,4,66,True,REJECTED,66 pts: >=5 tools + insurer brand; small cluster.,Low-Medium,S63;S64
+,ID-03,ID,Gold unit & price calculator (mayam/suku/gram→Rp),1 mayam berapa gram,10K – 100K,36,1,8,21,20160,10,18,15,7,7,6,3,66,True,REJECTED,"66 pts: factoid answer (zero-click), Pegadaian/Pluang; head -90% YoY.",Low,S41
+,BR-04,BR,CNPJ alfanumérico validator/generator,cnpj alfanumérico,10K – 100K,17,2,5,3,25370,7,18,16,7,7,6,5,66,False,REJECTED,66 pts and FAILS organic gate (A<8): >=9 validators incl. 4devs.,Low,S01;S02;S03
+,BR-12,BR,ABNT reference generator,gerador de referência abnt,10K – 100K,49,2,6,14,27670,7,18,17,9,8,4,3,66,False,REJECTED,"66 pts, FAILS gate: crowded with dedicated generators.",Low,S17
+,BR-05,BR,Fator R / Simples Nacional calculator,fator r,1K – 10K,63,0,4,14,5840,6,15,18,9,6,9,3,66,False,REJECTED,"66 pts, FAILS gate: every online-accounting brand runs one.",Low,S10
+,DE-04,DE,Pfändungsrechner 2026,pfändungsrechner 2026,10K – 100K,12,3,1,2,31260,6,17,18,9,6,7,3,66,False,REJECTED,"66 pts, FAILS gate: AOK + networks.",Low,S23
+,PL-06,PL,Kalkulator punktów rekrutacyjnych,kalkulator punktów,10K – 100K,1,1,0,0,10000,13,14,17,9,6,3,3,65,True,REJECTED,65 pts: ambiguous head intent; seasonal; per-school rules.,Low,S89
+,ES-04,ES,Actualizar renta alquiler (IPC/IRAV),actualizar renta alquiler,1K – 10K,26,0,1,11,2240,8,13,18,9,6,7,4,65,True,REJECTED,65 pts: official INE/Ministerio tools.,Low,S30
+,JP_EN-02,JP_EN,Japan pension lump-sum refund calculator (English),japan pension lump sum withdrawal calculator,10 – 100,8,0,0,1,170,13,4,19,10,6,8,4,64,True,REJECTED,64 pts: demand unmeasurable (KP location = Japan only: 10–100); >=3 agent-run estimators.,Low,S68;S69
+,DE-09,DE,Brennholz Festmeter/Raummeter converter,festmeter rechner,1K – 10K,32,0,1,7,1940,12,11,18,10,4,4,5,64,True,REJECTED,"64 pts: small demand, low value.",Low,S24
+,DE-14,DE,E-Rechnung viewer/validator,xrechnung viewer,100 – 1K,91,0,7,27,10270,6,14,17,7,7,10,3,64,False,REJECTED,"64 pts, FAILS gate: SaaS brands; High ad competition.",Low,S18
+,JP_EN-01,JP_EN,Japan take-home pay calculator (English),japan take home pay calculator,10 – 100,23,0,0,4,570,13,3,19,10,7,8,3,63,True,REJECTED,63 pts: demand unmeasurable with Japan-only location.,Low,S67
+,DE-05,DE,Kündigungsfrist-Rechner,kündigungsfrist rechner,1K – 10K,21,3,5,7,35760,6,17,15,7,7,7,4,63,False,REJECTED,"63 pts, FAILS gate.",Low,S26
+,MX-05,MX,Foto tamaño infantil/título print-sheet maker,foto tamaño infantil,10K – 100K,17,1,2,5,12590,8,18,14,8,6,5,3,62,True,REJECTED,62 pts: passport-photo.online + print fulfilment moat.,Low,S78
+,JP-11,JP,ヘボン式/パスポート romaniser,ヘボン式 ローマ字 変換,1K – 10K,9,0,1,3,1350,11,11,18,9,4,3,5,61,True,REJECTED,61 pts: small cluster; becomes a feature of JP-01.,Low-Medium,S65
+,JP-06,JP,育児休業給付金 calculator,育児休業給付金 計算,1K – 10K,24,0,2,7,2850,7,13,18,9,6,5,3,61,False,REJECTED,"61 pts, FAILS gate: official MHLW simulator.",Low,S55
+,JP-13,JP,子ども・子育て支援金 calculator,子ども子育て支援金 計算方法,1K – 10K,7,0,1,3,1330,14,10,17,8,4,4,3,60,True,REJECTED,60 pts: small cluster; official explanation suffices for most.,Low-Medium,S61;S62
+,DE-10,DE,Sütterlin/Fraktur generator,sütterlin übersetzer,1K – 10K,12,0,3,3,3360,12,13,15,8,5,3,4,60,True,REJECTED,60 pts: intent split (generator vs handwriting reading); low value.,Low,S27;S28
+,JP-03,JP,原稿用紙 renderer & counter,原稿用紙 書き方,10K – 100K,20,1,2,2,12350,10,15,15,7,6,3,4,60,True,REJECTED,60 pts: >=5 renderers with PDF; head is how-to intent.,Low,S57;S58
+,ID-06,ID,Kalkulator waris Islam (faraid),kalkulator waris islam,1K – 10K,20,0,2,6,2720,12,13,15,9,5,3,2,59,True,REJECTED,59 pts: NU Online authority; religious-legal review burden.,Low,S44
+,DE-15,DE,Aktivrente-Rechner,aktivrente rechner,1K – 10K,3,0,1,2,1200,8,10,18,9,4,6,4,59,True,REJECTED,59 pts: 1 head 1K–10K; authority portal + networks.,Low,S19
+,MX-04,MX,RFC con homoclave / CURP generator,calculadora rfc,10K – 100K,28,2,5,2,25390,8,18,12,7,7,3,3,58,True,REJECTED,58 pts: homoclave assigned by SAT (estimate-only); navigational to official CURP/RFC.,Low,S77
+,ID-08,ID,Coretax Excel→XML converter,simulasi coretax,1K – 10K,28,0,3,2,3430,8,13,14,8,5,8,1,57,True,REJECTED,57 pts: official DJP converters; schema churn; liability.,Low,S45
+,MX-07,MX,USICAMM points calculator,calculadora usicamm,1K – 10K,11,0,2,5,2540,8,14,14,8,5,4,2,55,True,REJECTED,55 pts: SERP unverifiable (index gap).,Low,S79
+,JP-04,JP,最低賃金 by prefecture + 年収 converter,最低賃金 2026,10K – 100K,20,1,2,2,12350,7,17,10,6,6,5,4,55,False,REJECTED,"55 pts, FAILS gate: MHLW + job portals; informational.",Low,S66
+,TR-01,TR,100'lük↔4'lük grade converter (YÖK + university tables),100 lük sistem 4 lük sisteme çevirme,not visible,0,0,0,0,0,10,0,19,10,7,2,4,52,True,REJECTED,52 pts: NO Keyword Planner data for Turkey; hesaplama networks present.,Low,S96;S97
+,PL-09,PL,Renta wdowia calculator,renta wdowia 2027,1K – 10K,12,0,1,2,1290,4,11,17,8,4,3,4,51,False,REJECTED,51 pts: official ZUS and KRUS calculators.,Low,S93;S94
+,TR-04,TR,AGS puan hesaplama,ags puan hesaplama,not visible,0,0,0,0,0,12,0,17,9,5,3,2,48,True,REJECTED,48 pts: NO KP data; formula volatility.,Low,S98
