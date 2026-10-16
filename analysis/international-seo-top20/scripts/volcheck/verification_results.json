@@ -1,0 +1,283 @@
+[
+ {
+  "sheet": 1,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 2,
+  "rows_checked": 30,
+  "mismatches": [
+   {
+    "row": 18,
+    "keyword": "alqueire paulista em hectares",
+    "field": "keyword",
+    "expected": "alqueire paulista em hectares",
+    "observed": "alqueire paulista em hectare",
+    "note": "Image shows singular 'hectare'. All metric fields are dashes in both, so only the keyword text differs."
+   },
+   {
+    "row": 19,
+    "keyword": "alqueire paulista para hectares",
+    "field": "keyword",
+    "expected": "alqueire paulista para hectares",
+    "observed": "alqueire paulista para hectare",
+    "note": "Image row 19 is the singular 'hectare' keyword with vol 100 – 1K, 0%, 0%, Low. Expected rows 19 and 20 have their keywords swapped, so the 100 – 1K volume belongs to 'alqueire paulista para hectare' (singular)."
+   },
+   {
+    "row": 20,
+    "keyword": "alqueire paulista para hectare",
+    "field": "keyword",
+    "expected": "alqueire paulista para hectare",
+    "observed": "alqueire paulista para hectares",
+    "note": "Image row 20 is the plural 'hectares' keyword, with all metrics shown as dashes. This is the other half of the swap with row 19."
+   }
+  ]
+ },
+ {
+  "sheet": 3,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 4,
+  "rows_checked": 30,
+  "mismatches": [
+   {
+    "row": 23,
+    "keyword": "consulta cclasstrib por cnae",
+    "field": "keyword",
+    "expected": "consulta cclasstrib por cnae",
+    "observed": "consulta cclasstrib por ncm",
+    "note": "The zoomed image clearly shows 'por ncm', not 'por cnae'. This is a different keyword. The image has no 'por cnae' row. Its other fields match the expected line: 100 – 1K, 0%, +∞, Low, ₹29.18, ₹83.96."
+   }
+  ]
+ },
+ {
+  "sheet": 5,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 6,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 7,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 8,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 9,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 10,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 11,
+  "rows_checked": 30,
+  "mismatches": [
+   {
+    "row": 21,
+    "keyword": "rvg rechner 2026",
+    "field": "bid_high",
+    "expected": "₹44.47",
+    "observed": "₹44.41",
+    "note": "Zoomed crop clearly shows the last digit as 1, not 7"
+   }
+  ]
+ },
+ {
+  "sheet": 12,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 13,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 14,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 16,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 15,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 17,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 18,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 19,
+  "rows_checked": 30,
+  "mismatches": [
+   {
+    "row": 14,
+    "keyword": "異体字 変換",
+    "field": "keyword",
+    "expected": "異体字 変換",
+    "observed": "崎 異体字 変換",
+    "note": "Image keyword has an extra leading kanji 崎 (shown as '崎 異体 字 変換'), so it is a different keyword. All numeric fields (all dashes) match."
+   }
+  ]
+ },
+ {
+  "sheet": 20,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 21,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 22,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 24,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 23,
+  "rows_checked": 30,
+  "mismatches": [
+   {
+    "row": 15,
+    "keyword": "calculadora finiquito 2026",
+    "field": "bid_high",
+    "expected": "₹2.25",
+    "observed": "₹52.25",
+    "note": "Confirmed on a 3x zoom: the top-of-page bid (high) shows ₹52.25. The OCR dropped the leading 5."
+   }
+  ]
+ },
+ {
+  "sheet": 25,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 26,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 27,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 29,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 28,
+  "rows_checked": 30,
+  "mismatches": []
+ },
+ {
+  "sheet": 30,
+  "rows_checked": 11,
+  "mismatches": []
+ },
+ {
+  "observed_value": "alqueire paulista em hectare",
+  "expected_is_correct": false,
+  "confidence": "high"
+ },
+ {
+  "observed_value": "alqueire paulista em hectare",
+  "expected_is_correct": false,
+  "confidence": "high"
+ },
+ {
+  "observed_value": "alqueire paulista para hectare",
+  "expected_is_correct": false,
+  "confidence": "high"
+ },
+ {
+  "observed_value": "alqueire paulista para hectare",
+  "expected_is_correct": false,
+  "confidence": "high"
+ },
+ {
+  "observed_value": "alqueire paulista para hectares",
+  "expected_is_correct": false,
+  "confidence": "high"
+ },
+ {
+  "observed_value": "alqueire paulista para hectares",
+  "expected_is_correct": false,
+  "confidence": "high"
+ },
+ {
+  "observed_value": "consulta cclasstrib por ncm",
+  "expected_is_correct": false,
+  "confidence": "high"
+ },
+ {
+  "observed_value": "consulta cclasstrib por ncm",
+  "expected_is_correct": false,
+  "confidence": "high"
+ },
+ {
+  "observed_value": "₹44.41",
+  "expected_is_correct": false,
+  "confidence": "high"
+ },
+ {
+  "observed_value": "₹44.41",
+  "expected_is_correct": false,
+  "confidence": "high"
+ },
+ {
+  "observed_value": "崎 異体字 変換",
+  "expected_is_correct": false,
+  "confidence": "high"
+ },
+ {
+  "observed_value": "崎 異体 字 変換 (a leading 崎-type kanji, possibly the variant 﨑, comes before 異体字 変換)",
+  "expected_is_correct": false,
+  "confidence": "high"
+ },
+ {
+  "observed_value": "₹52.25",
+  "expected_is_correct": false,
+  "confidence": "high"
+ },
+ {
+  "observed_value": "₹52.25",
+  "expected_is_correct": false,
+  "confidence": "high"
+ }
+]
